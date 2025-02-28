@@ -57,7 +57,7 @@ const sendMessage = async (mobile, message) => {
 };
 
 // ✅ Schedule WhatsApp Messages at 6:32 PM
-cron.schedule("32 18 * * *", async () => {
+cron.schedule("00 19 * * *", async () => {
     console.log("⏳ Running WhatsApp reminder task at 6:32 PM...");
     
     // Example: Replace with your logic to fetch numbers from the database
