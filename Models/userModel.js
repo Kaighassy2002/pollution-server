@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema({
     mobile:{
         type: String,
         required:true,
-        unique:true
+        
     },
     validDate:{
         type: String,
@@ -23,7 +23,8 @@ const userSchema = new mongoose.Schema({
     rate:{
         type: String,
         required:true
-    }
+    },
+    verified: { type: Boolean, default: false }
 
 })
 

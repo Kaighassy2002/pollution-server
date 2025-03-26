@@ -1,0 +1,6 @@
+2025/03/11-16:04:26.336 3414 Reusing MANIFEST D:\class\pollution\pollution-server\Service\whatsapp_session\Default\Local Storage\leveldb/MANIFEST-000001
+2025/03/11-16:04:26.341 3414 Recovering log #3
+2025/03/11-16:04:26.342 3414 Reusing old log D:\class\pollution\pollution-server\Service\whatsapp_session\Default\Local Storage\leveldb/000003.log 
+2025/03/11-16:05:26.360 1918 Level-0 table #5: started
+2025/03/11-16:05:26.371 1918 Level-0 table #5: 21090 bytes OK
+2025/03/11-16:05:26.374 1918 Delete type=0 #3

@@ -1,6 +1,6 @@
 const express = require('express')
 const userController = require('../Controllers/userController')
-const whatsappController = require('../Controllers/whatsappController')
+const messageContoller = require('../Controllers/messageContoller')
 
 const router = new express.Router()
 
@@ -18,7 +18,12 @@ router.put("/update/:id", userController.updateUser);
 // remove
 router.delete('/delete/:id', userController.deleteUser);
 
+// message today users
+router.get('/getUserList',userController.getExpiredUsersList)
+
 //send message
-router.post("/send-message", whatsappController.sendWhatsAppMessage);
+router.post("/sendmessages", messageContoller.sendMessages);
+
+
 
 module.exports = router

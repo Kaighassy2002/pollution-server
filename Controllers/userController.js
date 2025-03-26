@@ -81,6 +81,50 @@ exports.updateUser = async (req, res) => {
           res.status(500).json({ message: "Error deleting user", error });
       }
   };
+
+
+  // get user message details
+
+  exports.getExpiredUsersList = async (req, res) => {
+    try {
+        const today = new Date();
+        const expiredDate = new Date();
+        expiredDate.setDate(today.getDate() + 3); // 3 days from today
+
+        
+        const formattedExpiredDate = expiredDate.toISOString().split("T")[0];
+        const formattedToday = today.toISOString().split("T")[0];
+
+        console.log(`🔍 Fetching users with uptoDate on or before: ${formattedExpiredDate}`);
+
+        // Query to fetch all users whose `uptoDate` is today or within the next 3 days
+        const expiredUsers = await users.find(
+            { uptoDate: { $lte: formattedExpiredDate, $gte: formattedToday } }, // Ensures past and upcoming expiry users
+            { vehicleNo: 1, mobile: 1, uptoDate: 1, verified: 1, _id: 1 } // Selecting necessary fields
+        );
+
+        if (expiredUsers.length === 0) {
+            console.log("❌ No users found with expiry dates within the range.");
+            return res.status(404).json({ message: "No expired users found" });
+        }
+
+        console.log(`✅ Found ${expiredUsers.length} expired users`);
+        res.status(200).json(expiredUsers);
+    } catch (error) {
+        console.error("❌ Error fetching expired user data:", error);
+        res.status(500).json({ error: "Error fetching expired user data" });
+    }
+};
+
+
+
+
+
+
   
+
+
+
+
   
   
